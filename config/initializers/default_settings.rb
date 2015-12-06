@@ -1,0 +1,1 @@
+GeneralSettings.defaults['alcatel_config'] = AlcatelSettings.new

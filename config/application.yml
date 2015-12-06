@@ -1,0 +1,365 @@
+# config/application.yml
+defaults: &defaults
+  google_analytics_tracker: 'UA-50646468-1' # Account :- paresh.kanani@monitoreverywhere.com
+  google_analytics_domain: "api.simplimonitor.com"
+  api_server_url: "api.hubble.in"
+  newrelic_applications_url: "https://api.newrelic.com/v2/applications.json"
+  newrelic_api_key: "d7c49ef48f6bd511320d688072cc0099e789f92ba668e1b"
+
+  aws_access_key_id: "AKIAIDBFDZTAR2EB4KPQ" 
+  aws_secret_access_key: "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" 
+  s3_bucket_name: "localhost-resources"
+  s3_devices_path: "devices/%s/%s"
+  s3_events_path: "devices/%s/%s/%s"
+  s3_event_snap_folder: "devices/%s/snaps/"
+  s3_event_snap_path: "devices/%s/snaps/%s"
+  s3_event_clip_folder: "devices/%s/clips/"
+  s3_event_clip_path: "devices/%s/clips/%s"
+  s3_logs_path: "devices/%s/logs"
+
+  s3_device_masters_path: "device_models/%s/device_masters"
+  s3_device_model_capabilities_path: "device_models/capabilities/%s" 
+  s3_device_types_capabilities_path: "device_types/capabilities/%s"
+  s3_test_report_bucket: "factory_test_report"
+  s3_device_folder: "devices/%s"
+  file_path: "files/images/settings.PNG"
+  temp_file_path: "files/file.tmp"
+  snaps_path: "snaps"
+  clips_path: "clips"
+  logs_path: "logs"
+  image_path: ""  # Save the image to the device root folder
+  image_name: "image.png"
+  devices_path: "devices/%s"
+  logo_baby_path: "images/logo-baby.png"
+  aws_max_retries: 10
+  location_directory: "files/location"
+  capabiltity_directory: "files/capability"
+  tmp_filename: "file.tmp"
+
+  hours_inactive: "1440"
+  deactivate_after: "72"
+  hours_stored: "1440"
+  wait_for: "72"
+  days_crossed: "7"
+
+  default_page_size : 10
+  iv_length: 16
+  motion_detected: 4
+  custom_message_alert: 999999
+  updating_firmware_alert: 5
+  success_firmware_update: 6
+
+
+  exception_notifier:
+    sender: "noreply@hubbleconnected.com"
+    recepient: "kavya.vj@hubbleconnected.com"
+
+  registration_id_length: 26
+  mac_address_length: 12 
+  stream_id_length: 12
+  session_key_length: 64 
+
+  session_expiry: 10
+
+  sns_platform_endpoint:
+    default_gcm_endpoint: "arn:aws:sns:us-east-1:477584755503:app/GCM/sm_gcm_app"
+    default_apns_endpoint: "arn:aws:sns:us-east-1:477584755503:app/APNS/sm_apns"
+    default_testflight_apns: "arn:aws:sns:us-east-1:477584755503:app/APNS/testflight_apns"
+    hubble_gcm_endpoint: "arn:aws:sns:us-east-1:477584755503:app/GCM/hubble_v3_gcm_dev_app"
+    hubble_apns_endpoint: "arn:aws:sns:us-east-1:477584755503:app/APNS/hubble_v3_apns_prod_app"
+    hubble_testflight_apns_endpoint: "arn:aws:sns:us-east-1:477584755503:app/APNS_SANDBOX/hubble_v3_apns_dev_app"
+    vtech_gcm_endpoint: ""
+    vtech_apns_endpoint: ""
+    vtech_testflight_apns_endpoint: ""
+    adhoc_apns_endpoint: ""
+    bork_gcm_endpoint: ""
+    bork_apns_endpoint: ""
+    bork_testflight_apns_endpoint: ""
+    alcatel_gcm_endpoint: ""
+    alcatel_apns_endpoint: "arn:aws:sns:us-east-1:477584755503:app/APNS/alcatel_apns"
+    alcatel_testflight_apns_endpoint: ""
+    beurer_gcm_endpoint: ""
+    beurer_apns_endpoint: "arn:aws:sns:us-east-1:477584755503:app/APNS/beurer_apns"
+    beurer_testflight_apns_endpoint: ""
+
+  catergory_users: "Users"  
+  catergory_devices: "Devices"  
+
+  time_out:
+    is_port_open_timeout: 10
+    portal_agent_timeout: 25
+    device_available_timeout: 10
+    device_cache_available_timeout: 4
+    trigger_subclip_timeout: 10
+    create_subscription_timeout: 10
+    server_status_timeout: 3
+    wowza_server_timeout: 10
+
+  deactivation_message: "The device has not been used for last 60 days. It will be inactivated after 3 days."
+  upgrade_message: "Please upgrade the subscription_type"
+
+  stun:
+    byte_array : [0, 1, 0, 52, 33, 18, 164, 66, 166, 112, 219, 208, 115, 238, 5, 179, 21, 127, 39, 138, 128, 52, 0, 4, 116, 114, 117, 101, 0, 6, 0, 12, 52, 52, 51, 51, 52, 67, 51, 49, 65, 48, 48, 67, 128, 46, 0, 5, 116, 104, 114, 101, 101, 0, 0, 0, 128, 48, 0, 12, 52, 52, 51, 51, 52, 67, 51, 49, 65, 48, 48, 67]
+    stun_1_2_byte_array : [0,1,0,8,-48,-73,25,16,116,-24,126,70,54,-59,58,101,-105,4,26,90,0,3,0,4,0,0,0,0]
+    response_maxlen : 100
+
+  wowza_server:
+    get_dvr_list: "http://wowza.simplimonitor.com:8086/wowzaservice?app=camera&action=get_dvr_list&macAddress=%s"
+
+  send_command_url: "%sSendCommandEncrypted?macaddress=%s&channelId=%s&command=%s"
+  get_remote_ip_url: "%sGetRemoteIP?macaddress=%s"
+  get_cache_device_status: "%sIsDeviceAvailable?macaddress=%s"
+  load_balancer_url: "%s:%s/loadbalancer?region=%s"
+  default_device_plan: "freemium"
+  free_trial_plan: "hubble-tier1"
+  upgrade_free_trial_plan: "hubble-tier3"
+  free_trial_days: 10
+
+  policy_expiry_days: 7
+  content_length_limit: 3000000
+
+  rtmp_url: "rtmp://%s:%s/camera/mp4:%s.stream"
+  relay_rtmp_url: "rtmp://%s:%s/%s"
+  p2p_upnp_rtsp_url: "rtsp://%s:%s@%s:%s/blinkhd" #"rtsp://﻿﻿<registration_id>:<session_key>@<cam_remote_ip>:<cam_remote_port_1>/blinkhd"
+
+  from: "noreply@hubbleconnected.com"
+  address: "email-smtp.us-east-1.amazonaws.com"
+  port: 25
+  domain: "monitoreverywhere.com"
+  user_name: "AKIAJWHMJGOXGIGVVJJQ"
+  password: "AtA2+MQvRVy+cBWLFiSEGhnlSwDXbzPHjDJrm+EJ0Y6b"
+
+  facebook_app_id: "660742193968789"
+  facebook_app_secret: "0cf502caeb2a267f265c59fc6c5949c9"
+
+  mandrill_api_key: 'VCtWI_BoxDqaoxjjAFOxeA'
+
+  channel_id: "123456789012"
+  cipher_decryption_exception: "Data not multiple of block length.Got non-encrypted message"
+  invalid_format_message: "Has invalid format"
+
+  urls:
+    stun_server: "dev-stun1.hubble.in" 
+    stun1_server: "dev-stun1.hubble.in"
+    stun2_server: "dev-stun1.hubble.in"
+    wowza_server: "http://ct-wowza.hubble.in"
+    wowza_http_port: "1935"
+    portal_agent: "http://dev-stun.hubble.in/PortalAgentWrapper/"
+    upload_server: "http://dev-upload1.hubble.in"
+    webapp_url: "http://staging-app.hubbleconnected.com"
+
+  third_party_url:
+    alcatel_push_notification_url: "http://ipcam.phone-alert.alcatel-home.com"
+
+  wowza_rtmp_port: "1935"
+
+  camera_commands:
+    set_subscription_plan_command: "action=command&command=set_subscription_plan&value=%s"
+    downgrade_streaming_video_quality: "action=command&command=video_quality&value=2"
+    check_camera_ready_command: "action=command&command=check_cam_ready"
+
+    get_session_key_mode_any_command: "action=command&command=get_session_key&mode=any&natip=%s&natPort=%s&rtmp_ip=%s&streamname=%s"
+    get_session_key_mode_rtmp: "action=command&command=get_session_key&mode=relay_rtmp&natip=%s&natPort=%s&rtmp_ip=%s&streamname=%s"
+    get_sd_clip: "create_sdses&ip=%s&id=%s&clip=%s&sum=%s"
+
+    add_ble_tag: "action=command&command=add_ble_tag&tag_id=%s&tag_mac=%s&tag_type=%s"
+    remove_ble_tag: "action=command&command=remove_ble_tag&tag_id=%s"
+    
+    get_session_key_mode_any_command_oldversion: "action=command&command=get_session_key&mode=any&rtmp_ip=%s"
+    get_session_key_mode_rtmp_oldversion: "action=command&command=get_session_key&mode=relay_rtmp&rtmp_ip=%s"
+
+    close_session_command: "action=command&command=close_relay_rtmp"
+    talk_back_command: "action=command&command=start_talk_back&setup=%s.%s.%s.%s"
+    audio_stop_command: "action=command&command=audio_stop"
+    reset_delete_command: "action=command&command=reset_factory"
+    extended_attribute_command: "action=command&command=attribute_updated&key=%s"
+    mvr_toggle: "action=command&command=set_motion_area&grid=1x1&zone=%s" # Toggle motion video recording
+    set_subscription: "action=command&command=set_subscription&value=%s"
+    set_recording_destination: "action=command&command=set_recording_destination&value=%s"
+
+  # Following commands are in hex format
+  cooker_commands:
+    send_command: "action=command&command=uart_binary_transfer&value=%s"
+    packet_head: "7E"
+    packet_tail: "7A"
+    start_cook_head: "A0"
+    start_reheat_head: "A1"
+    set_clock_head: "A2"
+    get_product_identifier_command: "01A400A4"
+    cancel_all_command: "01A500A5"
+    cancel_master_head: "A5"
+    slave_ack_head: "B4"
+    slave_status_head: "B1"
+    get_status_command: "01A600A6"
+    preset_head: "A3"
+    alter_cook_head: "AA"
+    user_program_head: "A9"
+    slave_user_program_head: "B2"
+    reserve_byte: "70"
+    user_program_command: "7E01A700A77A"
+    recipe_api_url: "http://food2fork.com/api/search?key=82d01fb4b83c00848a1510c53bd639a3&q=%s"
+    low_temperature: 50
+    wireless_status_command: "01AB00AB"
+  
+
+  marketing:
+    email_welcome_content: "email_welcome_marketing_content"
+    email_welcome_subject: "email_welcome_marketing_subject"
+
+
+  reset_password_portal_url: "dev-app.hubble.in/#resetpassword" 
+  forgot_password_portal_url: "http://dev-app.hubble.in/#resetpassword"
+  device_share_url: "https://hubble.in"
+  webapp_url: "https://dev-api.hubble.in"
+
+  email_sent_message: "email sent"
+  share_with_mail_not_same: "Email id of user not same as the shared email id"
+  freetrial_expired_msg: "Your Free Trial has expired for '%s'."
+  freetrial_expiring_msg: "Your Free Trial will expire in %s days for '%s'."
+  freetrial_applied_msg: "A Free Trial has been applied to '%s'."
+  freetrial_available_msg: "A Free Trial is available for '%s'"
+  expired_subscription_msg: "Your subscription '%s' has been cancelled"
+  failed_subscription_payment_msg: "Your payment for subscription '%s' has failed"
+  subscription_applied_msg: "Your subscription '%s' has been applied to '%s'."
+  subscription_plan_url: "https://hubbleconnected.com/plans/"
+
+  secret_token: "9e3c63bd23a0f59dd97ba9a3032fbb9c4fdb5235ce0c14dba7a611b3516f66a693ce727efef552ac66489423fd99d27e8a5ba1489ab06adc43c2a192621ba066" 
+  updating_firmware_status: 1
+  success_update_firmware_status: 0
+
+  email_retry_limit: 3
+
+  recurly:
+    subdomain: "ebuynow"
+    api_key: 'df5c9b048d63462c912351c57887cc06'
+  
+  camera_service:
+    update_port_info_response: "Port information updated successfully."
+    set_stream_mode_response: "Sucessfully updated Streaming mode"
+    set_firmware_version_response: "Successfully updated firmware version."
+    port_open_response: "Port %s is open on %s."
+    port_closed_response: "Port %s is closed on %s."
+    version_upgrade_response: "Sucessful version upgradation"
+    updating_firmware_response: "Firmware updating status set successfully"
+    set_access_token_response: "Successfully updated access token"
+    duplicate_event_response: "Duplicate Event Found"
+    extended_attribute_set_response: "Successfully updated the information."
+    extended_attribute_failed_response: "Failed to update information"
+    notification_response: "Received notification from camera.\n
+      <br/>\n
+      Found users with enabled alert settings:- \n
+      <br/>\n
+      Sending notification to devices: \n
+      <br/>\n
+      GCMDevices:%s \n
+      <br/>\n
+      IOSDevices:%s"
+    upate_ip_response: "Successful update \n
+      <br/> \n
+      IP Address=%s \n
+      <br/> \n
+      MacAddr=%s \n
+      <br/> \n
+      Local IP=%s \n"
+
+
+development:
+  <<: *defaults
+  neat_setting: 800
+  error_docs_url: "http://api.simplimonitor.com/errors/%s" 
+
+test:
+  <<: *defaults
+  error_docs_url: "http://simplimonitor.com/errors/%s"
+
+  aws_access_key_id: "<%= ENV['AWS_ACCESS_KEY_ID'] %>"
+  aws_secret_access_key: "<%= ENV['AWS_SECRET_KEY'] %>"
+
+  sns_platform_endpoint:
+    gcm: "<%= ENV['GCM_ENDPOINT'] %>"
+    apns: "<%= ENV['APNS_ENDPOINT'] %>"
+    testflight_apns: "<%= ENV['TEST_FLIGHT_APNS_ENDPOINT'] %>"
+
+production:
+  <<: *defaults
+  google_analytics_tracker: 'UA-41698182-1'
+  error_docs_url: "http://monitoreverywhere.com/errors/%s"
+
+  aws_access_key_id: "<%= ENV['AWS_ACCESS_KEY_ID'] %>"
+  aws_secret_access_key: "<%= ENV['AWS_SECRET_KEY'] %>"
+
+  iam_role: "<%= ENV['IAM_ROLE'] %>"
+
+  sns_platform_endpoint:
+    default_gcm_endpoint: "<%= ENV['DEFAULT_GCM_ENDPOINT'] %>"
+    default_apns_endpoint: "<%= ENV['DEFAULT_APNS_ENDPOINT'] %>"
+    default_testflight_apns: "<%= ENV['DEFAULT_TEST_FLIGHT_APNS_ENDPOINT'] %>"
+    hubble_gcm_endpoint: "<%= ENV['HUBBLE_GCM_ENDPOINT'] %>"
+    hubble_apns_endpoint: "<%= ENV['HUBBLE_APNS_ENDPOINT'] %>"
+    hubble_testflight_apns_endpoint: "<%= ENV['HUBBLE_TEST_FLIGHT_APNS_ENDPOINT'] %>"
+    vtech_gcm_endpoint: "<%= ENV['VTECH_GCM_ENDPOINT'] %>"
+    vtech_apns_endpoint: "<%= ENV['VTECH_APNS_ENDPOINT'] %>"
+    vtech_testflight_apns_endpoint: "<%= ENV['VTECH_TEST_FLIGHT_APNS_ENDPOINT'] %>"
+    adhoc_apns_endpoint: "<%= ENV['ADHOC_APNS_ENDPOINT'] %>"
+    bork_gcm_endpoint: "<%= ENV['BORK_GCM_ENDPOINT'] %>"
+    bork_apns_endpoint: "<%= ENV['BORK_APNS_ENDPOINT'] %>"
+    bork_testflight_apns_endpoint: "<%= ENV['BORK_TEST_FLIGHT_APNS_ENDPOINT'] %>"
+    alcatel_gcm_endpoint: "<%= ENV['ALCATEL_GCM_ENDPOINT'] %>"
+    alcatel_apns_endpoint: "<%= ENV['ALCATEL_APNS_ENDPOINT'] %>"
+    alcatel_testflight_apns_endpoint: "<%= ENV['ALCATEL_TEST_FLIGHT_APNS_ENDPOINT'] %>"
+    beurer_gcm_endpoint: "<%= ENV['BEURER_GCM_ENDPOINT'] %>"
+    beurer_apns_endpoint: "<%= ENV['BEURER_APNS_ENDPOINT'] %>"
+    beurer_testflight_apns_endpoint: "<%= ENV['BEURER_TEST_FLIGHT_APNS_ENDPOINT'] %>"
+
+  exception_notifier:
+    sender: "noreply@hubbleconnected.com"
+    recepient: "<%= ENV['EXCEPTION_NOTIFIER_RECIPIENT'] %>"
+
+  urls:
+    stun_server: "<%= ENV['URL_STUN_SERVER'] %>" 
+    stun1_server: "<%= ENV['URL_STUN1_SERVER'] %>"
+    stun2_server: "<%= ENV['URL_STUN2_SERVER'] %>"
+    wowza_server: "<%= ENV['URL_WOWZA_SERVER'] %>"
+    wowza_http_port: "<%= ENV['WOWZA_HTTP_PORT'] %>"
+    portal_agent: "<%= ENV['URL_PORTAL_AGENT'] %>"
+    upload_server: "<%= ENV['URL_UPLOAD_SERVER'] %>"
+    webapp_url: "<%= ENV['WEBAPP_URL'] %>"
+
+  third_party_url:
+    alcatel_push_notification_url: "<%= ENV['ALCATEL_PUSH_NOTIFY_URL'] %>"
+  
+
+  marketing:
+    email_welcome_content: "<%= ENV['EMAIL_WELCOME_CONTENT'] %>"
+    email_welcome_subject: "<%= ENV['EMAIL_WELCOME_SUBJECT'] %>"
+
+  
+  hours_inactive: "<%= ENV['HOURS_INACTIVE'] %>"
+  deactivate_after: "<%= ENV['DEACTIVATE_AFTER'] %>"
+  hours_stored: "<%= ENV['HOURS_STORED'] %>"
+  wait_for: "<%= ENV['WAIT_FOR'] %>" 
+  days_crossed: "<%= ENV['DAYS_CROSSED'] %>" 
+
+  default_device_plan: "<%= ENV['DEFAULT_DEVICE_PLAN'] %>"
+  free_trial_plan: "<%= ENV['FREE_TRIAL_PLAN'] %>"
+  free_trial_days: "<%= ENV['FREE_TRIAL_DAYS'] %>"
+
+  reset_password_portal_url: "<%= ENV['RESET_PASSWORD_PORTAL_URL'] %>"
+  forgot_password_portal_url: "<%= ENV['FORGOT_PASSWORD_PORTAL_URL'] %>" 
+  device_share_url: "<%= ENV['DEVICE_SHARE_URL'] %>"
+  webapp_url: "<%= ENV['WEBAPP_URL'] %>"
+
+
+  facebook_app_id: "<%= ENV['FACEBOOK_APP_ID'] %>" 
+  facebook_app_secret: "<%= ENV['FACEBOOK_APP_SECRET'] %>" 
+
+  mandrill_api_key: "<%= ENV['MANDRILL_API_KEY'] %>"
+
+  s3_bucket_name: "<%= ENV['S3_BUCKET_NAME'] %>" 
+  wowza_rtmp_port: "<%= ENV['WOWZA_RTMP_PORT'] %>"
+
+  secret_token: "<%= ENV['SECRET_TOKEN'] %>"
+
+  recurly:
+    subdomain: "<%= ENV['RECURLY_SUBDOMAIN'] %>"
+    api_key: "<%= ENV['RECURLY_API_KEY'] %>" 
