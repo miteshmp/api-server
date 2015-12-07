@@ -27,7 +27,7 @@ do
 done < $ENV_CONFIG_FILE
 ###########################################END##############################################
 
-/etc/init.d/nginx restart
+/etc/init.d/nginx restart &
 #passenger-config restart-app /home/ubuntu/$APP_NAME/
 #fuser $TCP_PORT/tcp -k
 #sleep 1
