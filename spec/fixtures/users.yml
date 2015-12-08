@@ -1,0 +1,6 @@
+# Password is "password"
+mark:
+  first_name: Mark
+  last_name: Madsen
+  email: test@example.com
+  encrypted_password: $2a$10$vWncywoRgwM1DXcnWEXE/OjUI.rVLGSN84SG1Sg96wLOwNwF3Dbg6
