@@ -1,1 +1,0 @@
-*/5 * * * * /opt/aws-scripts-mon/mon-put-instance-data.pl --mem-util --aws-iam-role=aws-elasticbeanstalk-ec2-role  --mem-used-incl-cache-buff --from-cron
