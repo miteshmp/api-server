@@ -5,11 +5,15 @@ SCRIPTLOCATION="/home/ubuntu/$APP_NAME/script/"
 #TCP_PORT=2000
 
 chmod 775 $CODELOCATION -R
-mkdir -p $CODELOCATION/log $CODELOCATION/tmp
+mkdir -p $CODELOCATION/log $CODELOCATION/tmp/cache
+touch $CODELOCATION/log/passenger.log
+touch $CODELOCATION/log/production.log
+touch $CODELOCATION/log/newrelic_agent.log
+touch $CODELOCATION/log/development.log
 chmod 777 $CODELOCATION/log/ -R
 chmod 777 $CODELOCATION/tmp/ -R
 chown ubuntu. $CODELOCATION -R
-su ubuntu -c "cd $CODELOCATION/;bundle install"
+su ubuntu -c "cd $CODELOCATION;bundle install"
 
 ######################Setting Application Enviroment Variables##############################
 ENV_CONFIG_FILE=$SCRIPTLOCATION/env.conf
@@ -32,4 +36,4 @@ done < $ENV_CONFIG_FILE
 #fuser $TCP_PORT/tcp -k
 #sleep 1
 #cd $CODELOCATION/;nohup ruby tcp_server_control.rb  run & 2>&1
-exit 0
+#exit 0
