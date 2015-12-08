@@ -13,7 +13,7 @@ touch $CODELOCATION/log/development.log
 chmod 777 $CODELOCATION/log/ -R
 chmod 777 $CODELOCATION/tmp/ -R
 chown ubuntu. $CODELOCATION -R
-su ubuntu -c "cd $CODELOCATION;bundle install"
+su ubuntu -c "cd $CODELOCATION;bundle install --path vendor/bundle"
 
 ######################Setting Application Enviroment Variables##############################
 ENV_CONFIG_FILE=$SCRIPTLOCATION/env.conf
